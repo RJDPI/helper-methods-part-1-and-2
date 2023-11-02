@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1> 
-    Movie #<%= @the_movie.id %> details
+    Movie #<%= @movie.id %> details
     </h1>
     <div>
       <div>
@@ -13,7 +13,7 @@
       </div>
 
       <div>
-        <!--<a href="<%#= edit_movie_path(@the_movie) %>">
+        <!--<a href="<%#= edit_movie_path(@movie) %>">
           Edit movie
         </a>-->
 
@@ -21,15 +21,18 @@
       </div>
 
       <div>
-      <!--  <a href="<%#= movie_path (@the_movie) %>" data-turbo-method="delete">
+        <a href="<%= movie_path (@movie) %>" data-turbo-method="delete">
           Delete movie
         </a>
--->
+
+      
+
+        <%#= link_to "Delete Movie", @movie, data: { turbo-method: :delete } %>
         
+<%#= form_with(model: @movie, data: {turbo:false }) do |form| %>
 
-        <%= link_to "Delete Movie", @movie, data: { turbo_method: :delete } %>
-
-      </div>
+<%#= form_with(url: movie_path(@movie), data: { turbo: false }) do %>
+      
     </div>
 
     <dl>
@@ -37,28 +40,28 @@
         Title
       </dt>
       <dd>
-        <%= @the_movie.title %>
+        <%= @movie.title %>
       </dd>
 
       <dt>
         Description
       </dt>
       <dd>
-        <%= @the_movie.description %>
+        <%= @movie.description %>
       </dd>
 
       <dt>
         Created at
       </dt>
       <dd>
-        <%= time_ago_in_words(@the_movie.created_at) %> ago
+        <%= time_ago_in_words(@movie.created_at) %> ago
       </dd>
 
       <dt>
         Updated at
       </dt>
       <dd>
-        <%= time_ago_in_words(@the_movie.updated_at) %> ago
+        <%= time_ago_in_words(@movie.updated_at) %> ago
       </dd>
     </dl>
   </div>

@@ -1,29 +1,51 @@
 <h1>New movie</h1>
 
-<% @the_movie.errors.full_messages.each do |message| %>
+<% @movie.errors.full_messages.each do |message| %>
   <p style="color: red;"><%= message %></p>
 <% end %>
 
-<form action="<%= movies_path %>" method="post" data-turbo="false">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<hr>
 
-  <div>
-    <label for="title_box">
+<%= form_with(model: @movie, data: {turbo:false }) do |form| %>
+
+<%#= form_with(url: movie_path(@movie), data: { turbo: false }) do %>
+
+
+  <!--  <label_tag :title >
       Title
-    </label>
+    </label>-->
 
-    <input type="text" id="title_box" name="query_title" value="<%= @the_movie.title %>">
+    
+    <div>
+    <%= form.label :title  %>
+
+    <%= form.text_field :title %>
+
   </div>
 
-  <div>
-    <label for="description_box">
+   <!-- <label for="description ">
       Description
-    </label>
+    </label>-->
 
-    <textarea id="description_box" name="query_description" rows="3"><%= @the_movie.description %></textarea>
-  </div>
 
-  <button>
-    Create Movie
-  </button>
-</form>
+<div>
+    <%= form.label :description %>
+
+    <%= form.text_area :description, rows:3 %>
+
+    </div>
+
+    
+    
+    
+    <!--<textarea id="description " name="query_description" rows="3"><%#= @movie.description %></textarea>-->
+  
+
+
+  <%= form.button %>
+
+<% end %>
+
+
+
+  
